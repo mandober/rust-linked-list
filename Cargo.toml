@@ -1,0 +1,6 @@
+[package]
+name = "listone"
+version = "0.1.0"
+authors = ["mandober <ilicivan@zoho.com>"]
+
+[dependencies]
