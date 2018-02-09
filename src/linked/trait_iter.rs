@@ -1,24 +1,41 @@
 use linked::list::*;
 
-// first, a struct that iterator will return
-// IntoIter struct: just a wrapper over List
-pub struct IntoIter<T>(List<T>);
+pub struct Iter<'a, T: 'a> {
+    next: Option<&'a Node<T>>,
+}
 
-// `into_iter` List method that returns the wrapping struct on iteration.
-// It consumes `self` i.e. moves the list instance
 impl<T> List<T> {
-    pub fn into_iter(self) -> IntoIter<T> {
-        IntoIter(self)
+    pub fn iter(&self) -> Iter<T> {
+        Iter { next: self.head.as_ref().map(|node| &**node) }
     }
 }
 
-// implement Iterator trait for the wrapping struct IntoIter
-impl<T> Iterator for IntoIter<T> {
-    type Item = T;
+impl<'a, T: 'a> Iterator for Iter<'a, T> {
+    type Item = &'a T;
+
     fn next(&mut self) -> Option<Self::Item> {
-        self.0.pop()
+        self.next.map(|node| {
+            self.next = node.next.as_ref().map(|node| &**node);
+            &node.payload
+        })
     }
 }
+
+
+/*
+impl<'a, T> Iterator for Iter<'a, T> {
+    type Item = &'a T;
+    fn next(&mut self) -> Option<Self::Item> { /* stuff */ }
+}
+
+Which can be desugarred to:
+
+impl<'a, T> Iterator for Iter<'a, T> {
+    type Item = &'a T;
+    fn next<'b>(&'b mut self) -> Option<&'a T> { /* stuff */ }
+}
+*/
+
 
 
 

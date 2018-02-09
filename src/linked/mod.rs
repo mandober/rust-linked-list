@@ -4,36 +4,21 @@
 // list
 pub mod list;
 pub use self::list::*;
-
 // methods: new, size, is_empty, clear
 pub mod methods;
 pub use self::methods::*;
-
-
-// method: push
+// push
 pub mod push;
 pub use self::push::*;
-
-// method: pop
+// pop
 pub mod pop;
 pub use self::pop::*;
-
-// method: peek
+// peek
 pub mod peek;
 pub use self::peek::*;
-
-// method: peek_mut
+// peek_mut
 pub mod peek_mut;
 pub use self::peek_mut::*;
-
-// method: append
-pub mod append;
-pub use self::append::*;
-
-// method: pop_back
-pub mod pop_back;
-pub use self::pop_back::*;
-
 
 
 // trait: drop
@@ -44,10 +29,6 @@ pub use self::trait_drop::*;
 pub mod trait_display;
 pub use self::trait_display::*;
 
-// trait: iter
-pub mod trait_iter;
-pub use self::trait_iter::*;
-
 // trait: default
 pub mod trait_default;
 pub use self::trait_default::*;
@@ -55,3 +36,34 @@ pub use self::trait_default::*;
 // trait: index
 // pub mod trait_index;
 // pub use self::trait_index::*;
+
+// trait: iter
+pub mod trait_iter;
+pub use self::trait_iter::*;
+
+// trait: into_iter
+pub mod trait_into_iter;
+pub use self::trait_into_iter::*;
+
+// trait: iter_mut
+pub mod trait_iter_mut;
+pub use self::trait_iter_mut::*;
+
+
+
+// append
+pub mod append;
+pub use self::append::*;
+
+// peek_last
+pub mod peek_last;
+pub use self::peek_last::*;
+
+// pop_back
+pub mod pop_back;
+pub use self::pop_back::*;
+
+
+// peek_last_mut
+// pub mod peek_last_mut;
+// pub use self::peek_last_mut::*;

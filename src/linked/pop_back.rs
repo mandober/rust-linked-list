@@ -20,7 +20,7 @@ impl<T> List<T> where T: ::std::fmt::Debug {
           //if let None = mb_node.next.as_mut().map(|node| &mut node.next) {
           if let None = mb_node.next {
             //mb_node is second to last
-            println!("second to last, mb_node: {:?}", *mb_node);
+            println!("I need second to last node: {:?}", *mb_node);
             break;
           }
           link = mb_node.next.as_mut()

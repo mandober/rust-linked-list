@@ -6,11 +6,11 @@ mod test;
 fn main() {
   // new list
   let mut list = List::new();
-  println!("{}", list);
+  //println!("new: {}", list);
 
   // append
-  list.append("zero".to_string());
-  println!("{}", list);
+  // list.append("zero".to_string());
+  // println!("after append: {}", list);
 
   // push some payloads
   list.push("airplane".to_string());
@@ -19,20 +19,14 @@ fn main() {
   list.push("drum".to_string());
 
   // Display the list
-  println!("{}", list);
+  println!("list after 4 pushes: {}", list);
 
-  list.pop_back();
+  //println!("peek_last: {:?}", list.peek_last());
 
-  {
 
-    let mut link = list.head.as_mut();
-    while let Some(mut_node) = link {
-      if let None = mut_node.next {
-        break;
-      }
-      link = mut_node.next.as_mut();
-    }
-
+  let mut it = list.iter_mut();
+  while let Some(element) = it.next() {
+    println!("iter_mut.next: {}", element);
   }
 
 
@@ -41,5 +35,7 @@ fn main() {
       println!("{:?}", x);
   }
   */
+
+
 
 } //main
